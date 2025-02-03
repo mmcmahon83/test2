@@ -45,6 +45,12 @@ with models.DAG(
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         #image_pull_secrets="secret",
         image_pull_secrets="regcred-atx",
+        env_var_secret = secret.Secret(
+        deploy_type='env',
+        deploy_target='VERSION_NUMBER',
+        secret='regcred-atx',
+        key='VERSION_NUMBER',
+            )
         # namespace="airflow",
         force_pull=True,
         working_dir="/opt/airflow/dags/repo/scripts",
