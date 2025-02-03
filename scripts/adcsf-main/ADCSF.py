@@ -40,11 +40,11 @@ with models.DAG(
 ) as dag:
        
     # docker operator that runs script, returns jinja that can be read to get dynamic file names
-    script = DockerOperator(
-        docker_url="unix://var/run/docker.sock",  
+    script = DockerOperator(  
         command="Rscript /opt/airflow/dags/Scripts/adcsf/ADCSF.R",
-        image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
+        image="https://harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         working_dir="/opt/airflow/dags/Scripts",
+        docker_url="unix://var/run/docker.sock",
         network_mode="bridge",
         task_id="script_task",
         environment={"TZ":"America/Chicago"},
