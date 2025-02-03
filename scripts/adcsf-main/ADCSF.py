@@ -42,7 +42,8 @@ with models.DAG(
     # docker operator that runs script, returns jinja that can be read to get dynamic file names
     script = DockerOperator(  
         command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
-        image="https://harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
+        image="registry.harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
+        image_pull_secrets= regcred-atx,
         working_dir="/opt/airflow/dags/repo/scripts",
         # docker_url=os.getenv("docker_url"),
         # docker_url="TCP://airflow-dev.us.int.sonichealthcare:2375",
