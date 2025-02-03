@@ -38,6 +38,12 @@ with models.DAG(
     catchup=False,
     tags=["docker","daily","Nielsa","Production"],
 ) as dag:
+env_var_secret = secret.Secret(
+    deploy_type='env',
+    deploy_target='VERSION_NUMBER',
+    secret='myregistrykey',
+    key='VERSION_NUMBER',
+        )
        
     # docker operator that runs script, returns jinja that can be read to get dynamic file names
     script = DockerOperator(  
