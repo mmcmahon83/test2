@@ -45,7 +45,7 @@ with models.DAG(
         image="https://harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         working_dir="/opt/airflow/dags/repo/scripts",
         # docker_url=os.getenv("docker_url"),
-        docker_url="TCP://docker-socket-proxy:2375",
+        docker_url="TCP://airflow-dev.us.int.sonichealthcare:2375",
         network_mode="bridge",
         task_id="script_task",
         environment={"TZ":"America/Chicago"},
