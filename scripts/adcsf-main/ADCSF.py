@@ -45,7 +45,7 @@ with models.DAG(
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         #image_pull_secrets="secret",
         image_pull_secrets="regcred-atx",
-        namespace="airflow",
+        # namespace="airflow",
         force_pull=True,
         working_dir="/opt/airflow/dags/repo/scripts",
         # docker_url=os.getenv("docker_url"),
