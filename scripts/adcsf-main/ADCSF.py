@@ -44,7 +44,7 @@ with models.DAG(
         command="Rscript /opt/airflow/dags/Scripts/adcsf/ADCSF.R",
         image="https://harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         working_dir="/opt/airflow/dags/Scripts",
-        docker_url="unix://var/run/docker.sock",
+        docker_url=os.getenv("docker_url"),
         network_mode="bridge",
         task_id="script_task",
         environment={"TZ":"America/Chicago"},
