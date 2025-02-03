@@ -44,7 +44,7 @@ with models.DAG(
         command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
         image="registry.harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         image_pull_secrets=regcred-atx,
-        force_pull=True
+        force_pull=True,
         working_dir="/opt/airflow/dags/repo/scripts",
         # docker_url=os.getenv("docker_url"),
         # docker_url="TCP://airflow-dev.us.int.sonichealthcare:2375",
