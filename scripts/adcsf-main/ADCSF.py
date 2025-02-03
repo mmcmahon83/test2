@@ -43,7 +43,7 @@ with models.DAG(
     script = DockerOperator(
         docker_url=os.getenv("docker_url"),  
         command="Rscript /opt/airflow/dags/Scripts/adcsf/ADCSF.R",
-        image="sonic/r-base",
+        image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         working_dir="/opt/airflow/dags/Scripts",
         network_mode="bridge",
         task_id="script_task",
