@@ -44,7 +44,7 @@ with models.DAG(
         command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         #image_pull_secrets="secret",
-        image_pull_secrets=("secret"),
+        image_pull_secrets=('secret'),
         # namespace="airflow",
         force_pull=True,
         working_dir="/opt/airflow/dags/repo/scripts",
