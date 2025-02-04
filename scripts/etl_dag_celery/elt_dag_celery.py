@@ -13,7 +13,7 @@ with DAG('etl_dag',
          default_args=default_args,
          schedule_interval=None) as dag:
 
-    test_work = kubernetes_pod_operator.KubernetesPodOperator(
+    r_base = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         # image="python:3.7-slim",
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
@@ -26,9 +26,9 @@ with DAG('etl_dag',
         cmds=["sleep"],
         arguments=["200"],
         labels={"foo": "bar"},
-        name="test-work",
+        name="r-base",
         task_id="extract-tranform",
         get_logs=True
     )
 
-    test_work
+    r_base
