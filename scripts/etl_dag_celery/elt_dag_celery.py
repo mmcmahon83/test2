@@ -13,7 +13,7 @@ with DAG('etl_dag',
          default_args=default_args,
          schedule_interval=None) as dag:
 
-test-work = kubernetes_pod_operator.KubernetesPodOperator(
+    test-work = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         # image="python:3.7-slim",
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
