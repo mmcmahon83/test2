@@ -45,6 +45,7 @@ with models.DAG(
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         #image_pull_secrets="secret",
         #image_pull_secrets=('secret'),
+        image_pull_secrets=[k8s.V1LocalObjectReference('regcred-atx')],
         # namespace="airflow",
         force_pull=True,
         working_dir="/opt/airflow/dags/repo/scripts",
