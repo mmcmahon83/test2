@@ -16,7 +16,7 @@ with DAG('etl_dag',
     extract_tranform = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         # image="python:3.7-slim",
-        image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
+        image="harbor-atx.us.int.sonichealthcare/airflow/r-base22:latest",
         #image="python:3.8-slim-buster",
         # image_pull_secrets=regcred-atx,
         #image_pull_secrets=('secret'),
