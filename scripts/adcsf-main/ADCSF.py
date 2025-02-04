@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 import pendulum
 from airflow import models
 from airflow.providers.docker.operators.docker import DockerOperator
+from airflow.contrib.operators import kubernetes_pod_operator
 from airflow.providers.smtp.operators.smtp import EmailOperator
 from airflow.operators.python import PythonOperator
 #env_var_secret = secret.Secret(
