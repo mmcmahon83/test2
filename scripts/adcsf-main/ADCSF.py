@@ -49,7 +49,7 @@ with models.DAG(
     script = DockerOperator(  
         command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
-        image_pull_secrets=regcred-atx,
+        # image_pull_secrets=regcred-atx,
         #image_pull_secrets=('secret'),
         #image_pull_secrets=[k8s.V1LocalObjectReference('regcred-atx')],
         # namespace="airflow",
