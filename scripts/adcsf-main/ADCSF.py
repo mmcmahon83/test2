@@ -9,6 +9,12 @@ from airflow import models
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.providers.smtp.operators.smtp import EmailOperator
 from airflow.operators.python import PythonOperator
+env_var_secret = secret.Secret(
+    deploy_type='env',
+    deploy_target='VERSION_NUMBER',
+    secret='regcred-atx',
+    key='VERSION_NUMBER',
+        )
 
 #mount information and DAGID
 load_dotenv()
@@ -43,9 +49,9 @@ with models.DAG(
     script = DockerOperator(  
         command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
-        #image_pull_secrets="secret",
+        image_pull_secrets=env_var_secret,
         #image_pull_secrets=('secret'),
-        image_pull_secrets=[k8s.V1LocalObjectReference('regcred-atx')],
+        #image_pull_secrets=[k8s.V1LocalObjectReference('regcred-atx')],
         # namespace="airflow",
         force_pull=True,
         working_dir="/opt/airflow/dags/repo/scripts",
