@@ -46,15 +46,15 @@ with models.DAG(
 ) as dag:
        
     # docker operator that runs script, returns jinja that can be read to get dynamic file names
-    script = DockerOperator(  
+    script = kubernetes_pod_operator.KubernetesPodOperator( 
         command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
-        # image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
-        image="python:3.8-slim-buster",
+        image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
+        # image="python:3.8-slim-buster",
         # image_pull_secrets=regcred-atx,
         #image_pull_secrets=('secret'),
         #image_pull_secrets=[k8s.V1LocalObjectReference('regcred-atx')],
         # namespace="airflow",
-        force_pull=True,
+        # force_pull=True,
         working_dir="/opt/airflow/dags/repo/scripts",
         # docker_url=os.getenv("docker_url"),
         # docker_url="TCP://airflow-dev.us.int.sonichealthcare:2375",
