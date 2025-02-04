@@ -65,7 +65,7 @@ with models.DAG(
         environment={"TZ":"America/Chicago"},
         retries=3,
         retry_delay=timedelta(minutes=5),
-        mount_tmp_dir=False,
+        # mount_tmp_dir=False,
         mounts=[Mount(source='/root/zdir/docker/airflow/dags', target='/opt/airflow/dags', type='bind')],
         dag=dag,
     )
