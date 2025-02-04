@@ -48,7 +48,7 @@ with models.DAG(
        
     # docker operator that runs script, returns jinja that can be read to get dynamic file names
     script = kubernetes_pod_operator.KubernetesPodOperator( 
-        # command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
+        #mvm command="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         # image="python:3.8-slim-buster",
         # image_pull_secrets=regcred-atx,
@@ -56,16 +56,16 @@ with models.DAG(
         #image_pull_secrets=[k8s.V1LocalObjectReference('regcred-atx')],
         # namespace="airflow",
         # force_pull=True,
-        working_dir="/opt/airflow/dags/repo/scripts",
+        # mvm working_dir="/opt/airflow/dags/repo/scripts",
         # docker_url=os.getenv("docker_url"),
         # docker_url="TCP://airflow-dev.us.int.sonichealthcare:2375",
         # docker_url="unix://var/run/docker.sock",
         network_mode="bridge",
         task_id="script_task",
-        environment={"TZ":"America/Chicago"},
+        # mvm environment={"TZ":"America/Chicago"},
         retries=3,
         retry_delay=timedelta(minutes=5),
-        # mount_tmp_dir=False,
+        # mvm mount_tmp_dir=False,
         mounts=[Mount(source='/root/zdir/docker/airflow/dags', target='/opt/airflow/dags', type='bind')],
         dag=dag,
     )
