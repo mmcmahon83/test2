@@ -57,7 +57,7 @@ with models.DAG(
         working_dir="/opt/airflow/dags/repo/scripts",
         # docker_url=os.getenv("docker_url"),
         # docker_url="TCP://airflow-dev.us.int.sonichealthcare:2375",
-        docker_url="unix://var/run/docker.sock",
+        # docker_url="unix://var/run/docker.sock",
         network_mode="bridge",
         task_id="script_task",
         environment={"TZ":"America/Chicago"},
