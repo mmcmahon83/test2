@@ -26,7 +26,7 @@ with DAG('etl_dag',
         cmds=["sleep"],
         arguments=["200"],
         labels={"foo": "bar"},
-        name="extract-tranform",
+        name="test-work",
         task_id="extract-tranform",
         get_logs=True
     )
