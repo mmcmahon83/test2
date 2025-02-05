@@ -16,7 +16,7 @@ with DAG('etl_dag',
     r_base = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
-        cmds=["sleep"],
+        cmds=["sleep", "Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R"],
         arguments=["240"],
         labels={"r-base": "r-base"},
         name="r-base",
