@@ -21,9 +21,9 @@ with DAG('etl_dag',
         labels={"r-base": "r-base"},
         name="r-base",
         task_id="extract-tranform",
-        get_logs=True
+        get_logs=True,
         env_vars={"TZ":"America/Chicago"},
-        cmds="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R",
+        cmds="Rscript /opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R"
     )
 
     r_base
