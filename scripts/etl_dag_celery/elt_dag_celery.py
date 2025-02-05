@@ -13,12 +13,12 @@ from datetime import datetime, timedelta
 from airflow.contrib.operators import kubernetes_pod_operator
 from kubernetes.client import models as k8s
 
-#default_args = {
-#    'owner': 'Damavis',
-#    'start_date': datetime(2020, 5, 5),
-#    'retries': 1,
-#    'retry_delay': timedelta(seconds=5)
-#}
+default_args = {
+    'owner': 'Damavis',
+    'start_date': datetime(2020, 5, 5),
+    'retries': 1,
+    'retry_delay': timedelta(seconds=5)
+}
 
 with DAG('etl_dag',
          default_args=default_args,
