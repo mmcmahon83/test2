@@ -26,7 +26,7 @@ default_args = {
     volume = k8s.V1Volume(
             name='test-volume',
             persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
-)
+    )
 with DAG('etl_dag',
          default_args=default_args,
          schedule_interval=None) as dag:
