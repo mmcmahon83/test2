@@ -31,7 +31,7 @@ with DAG('etl_dag',
          default_args=default_args,
          schedule_interval=None) as dag:
              
-r_base = kubernetes_pod_operator.KubernetesPodOperator(
+    r_base = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         volumes=[volume],
