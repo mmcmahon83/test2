@@ -22,6 +22,7 @@ with DAG('etl_dag',
         name="r-base",
         task_id="extract-tranform",
         get_logs=True
+        env_vars={"TZ":"America/Chicago"},
     )
 
     r_base
