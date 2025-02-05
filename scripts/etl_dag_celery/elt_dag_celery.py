@@ -25,11 +25,7 @@ with DAG('etl_dag',
          schedule_interval=None) as dag:
 
         vol1 = k8s.V1VolumeMount(name='test-volume', mount_path='/opt/airflow/dags')
-#volume = k8s.V1Volume(
-#            name='test-volume',
- #           persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
-  #  )
-         volume = k8s.V1Volume(
+        volume = k8s.V1Volume(
              name='test-volume',
              persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
 )
