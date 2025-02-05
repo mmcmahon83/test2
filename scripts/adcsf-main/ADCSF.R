@@ -17,7 +17,7 @@ endingDateToQuery = format(lastDayLastMonth, format='%m/%d/%Y')
 adcsf <- NULL
 
 #Connection to the MISYS database
-source('/opt/airflow/dags/repo/g.R')  # This establishes jdbc connection to tkbs and grabs a subscription
+source('/opt/airflow/dags/repo/scripts/g.R')  # This establishes jdbc connection to tkbs and grabs a subscription
 
 currentDayDateFormat = firstDayLastMonth
 while(currentDayDateFormat <= lastDayLastMonth) {
