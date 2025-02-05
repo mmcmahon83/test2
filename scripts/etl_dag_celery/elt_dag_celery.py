@@ -24,7 +24,7 @@ with DAG('etl_dag',
          default_args=default_args,
          schedule_interval=None) as dag:
 
-#vol1 = k8s.V1VolumeMount(name='test-volume', mount_path='/opt/airflow/dags')
+        vol1 = k8s.V1VolumeMount(name='test-volume', mount_path='/opt/airflow/dags')
 #volume = k8s.V1Volume(
 #            name='test-volume',
  #           persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
@@ -37,7 +37,7 @@ r_base = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         volumes=[volume],
-        volume_mounts=[volume],
+        volume_mounts=[vol1],
         cmds=["sleep"],
         arguments=["240"],
         #cmds=["Rscript"],
