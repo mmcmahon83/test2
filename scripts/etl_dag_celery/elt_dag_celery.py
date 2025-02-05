@@ -13,7 +13,7 @@ with DAG('etl_dag',
          default_args=default_args,
          schedule_interval=None) as dag:
 
-    vol1 = k8s.V1VolumeMount(
+vol1 = k8s.V1VolumeMount(
         name='test-volume', mount_path='/opt/airflow/dags'
     )
     volume = k8s.V1Volume(
