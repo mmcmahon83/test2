@@ -29,6 +29,7 @@ with DAG('etl_dag',
              name='test-volume',
              persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
 )
+        r_base = 
 r_base = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
@@ -45,4 +46,4 @@ r_base = kubernetes_pod_operator.KubernetesPodOperator(
         env_vars={"TZ":"America/Chicago"},
     )
 
-    # r_base
+    r_base
