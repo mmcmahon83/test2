@@ -24,7 +24,7 @@ with DAG('etl_dag',
         get_logs=True,
         env_vars={"TZ":"America/Chicago"},
         cmds=["Rscript"], 
-        argument= ["/opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R"]
+        argument=["/opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R"]
     )
 
     r_base
