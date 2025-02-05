@@ -15,17 +15,10 @@ with DAG('etl_dag',
 
     r_base = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
-        # image="python:3.7-slim",
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
-        #image="python:3.8-slim-buster",
-        # image_pull_secrets=regcred-atx,
-        #image_pull_secrets=('secret'),
-        #image_pull_secrets=[k8s.V1LocalObjectReference('regcred-atx')],
-        # namespace="airflow",
-        # force_pull=True,
         cmds=["sleep"],
         arguments=["240"],
-        labels={"foo": "bar"},
+        labels={"r-base": "r-base"},
         name="r-base",
         task_id="extract-tranform",
         get_logs=True
