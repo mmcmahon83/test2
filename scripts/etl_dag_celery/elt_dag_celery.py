@@ -41,4 +41,5 @@ with DAG('etl_dag',
         task_id="script_task",
         get_logs=True,
         env_vars={"TZ":"America/Chicago"},
+        workingDir= "/opt/airflow/dags/repo/scripts/adcsf-main",
     )
