@@ -23,7 +23,7 @@ with DAG('etl_dag',
         task_id="extract-tranform",
         get_logs=True,
         env_vars={"TZ":"America/Chicago"},
-        cmds=["Rscript"] 
+        cmds=["Rscript"], 
         argument= ["/opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R"]
     )
 
