@@ -19,9 +19,9 @@ from airflow.contrib.operators import kubernetes_pod_operator
 #    'retry_delay': timedelta(seconds=5)
 #}
 
-with DAG('etl_dag',
-         default_args=default_args,
-         schedule_interval=None) as dag:
+#with DAG('etl_dag',
+#         default_args=default_args,
+#         schedule_interval=None) as dag:
 
 vol1 = k8s.V1VolumeMount(
             name='test-volume', mount_path='/opt/airflow/dags'
