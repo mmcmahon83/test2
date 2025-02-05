@@ -46,4 +46,4 @@ r_base = kubernetes_pod_operator.KubernetesPodOperator(
         env_vars={"TZ":"America/Chicago"},
     )
 
-    r_base
+    # r_base
