@@ -46,7 +46,7 @@ accessions = sort(unique(adcsf$ACCESSION))
 adcsfall = NULL
 temp <- NULL
 count = 0
-source('/opt/airflow/dags/g.R')
+source('/opt/airflow/dags/repo/scripts/g.R')
 for(accession in accessions) {
 
   temp <- dbGetQuery(conn, paste0("SELECT ACCESSION  
