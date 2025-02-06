@@ -39,7 +39,7 @@ with models.DAG(
         "on_failure_callback": report_failure },
     catchup=False,
     tags=["docker","daily","Nielsa","Production"],
-#) as dag:
+) as dag:
        
     # docker operator that runs script, returns jinja that can be read to get dynamic file names
 #    script = DockerOperator(
