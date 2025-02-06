@@ -69,11 +69,11 @@ with models.DAG(
             persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
     )
 
-with DAG('etl_dag',
-         default_args=default_args,
-         schedule_interval=None) as dag:
+#with DAG('etl_dag',
+#         default_args=default_args,
+#         schedule_interval=None) as dag:
              
-    r_base = kubernetes_pod_operator.KubernetesPodOperator(
+    script = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
         volumes=[volume],
