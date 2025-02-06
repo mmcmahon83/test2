@@ -57,12 +57,12 @@ with models.DAG(
 #        dag=dag,
 #    )
 
-default_args = {
-    'owner': 'Mike',
-    'start_date': datetime(2020, 5, 5),
-    'retries': 1,
-    'retry_delay': timedelta(seconds=5)
-}
+#default_args = {
+#    'owner': 'Mike',
+#    'start_date': datetime(2020, 5, 5),
+#    'retries': 1,
+#    'retry_delay': timedelta(seconds=5)
+#}
 vol1 = k8s.V1VolumeMount(name='test-volume', mount_path='/opt/airflow/dags')
 volume = k8s.V1Volume(
             name='test-volume',
