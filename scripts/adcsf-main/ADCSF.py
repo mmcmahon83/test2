@@ -40,13 +40,14 @@ with models.DAG(
     catchup=False,
     tags=["docker","daily","Nielsa","Production"],
 ) as dag:
-       
+
+# Mount volume for kubernetes_pod_operator  
     vol1 = k8s.V1VolumeMount(name='test-volume', mount_path='/opt/airflow/dags')
     volume = k8s.V1Volume(
             name='test-volume',
             persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
     )
-             
+ # kubernetes_pod_operator that runs script, returns jinja that can be read to get dynamic file name           
     script = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
         image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
