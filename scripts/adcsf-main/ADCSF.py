@@ -37,22 +37,44 @@ with models.DAG(
         "on_failure_callback": report_failure },
     catchup=False,
     tags=["docker","daily","Nielsa","Production"],
-) as dag:
+#) as dag:
        
     # docker operator that runs script, returns jinja that can be read to get dynamic file names
-    script = DockerOperator(
-        docker_url=os.getenv("docker_url"),  
-        command="Rscript /opt/airflow/dags/Scripts/adcsf/ADCSF.R",
-        image="sonic/r-base",
-        working_dir="/opt/airflow/dags/Scripts",
-        network_mode="bridge",
+#    script = DockerOperator(
+#        docker_url=os.getenv("docker_url"),  
+#        command="Rscript /opt/airflow/dags/Scripts/adcsf/ADCSF.R",
+#        image="sonic/r-base",
+#        working_dir="/opt/airflow/dags/Scripts",
+#        network_mode="bridge",
+#        task_id="script_task",
+#        environment={"TZ":"America/Chicago"},
+#        retries=3,
+#        retry_delay=timedelta(minutes=5),
+#        mount_tmp_dir=False,
+#        mounts=[Mount(source='/root/zdir/docker/airflow/dags', target='/opt/airflow/dags', type='bind')],
+#        dag=dag,
+#    )
+vol1 = k8s.V1VolumeMount(name='test-volume', mount_path='/opt/airflow/dags')
+volume = k8s.V1Volume(
+            name='test-volume',
+            persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
+    )
+
+with DAG('etl_dag',
+         default_args=default_args,
+         schedule_interval=None) as dag:
+             
+    r_base = kubernetes_pod_operator.KubernetesPodOperator(
+        namespace='airflow',
+        image="harbor-atx.us.int.sonichealthcare/airflow/r-base:latest",
+        volumes=[volume],
+        volume_mounts=[vol1],
+        arguments=['Rscript', '/opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R'],
+        labels={"r-base": "r-base"},
+        name="r-base",
         task_id="script_task",
-        environment={"TZ":"America/Chicago"},
-        retries=3,
-        retry_delay=timedelta(minutes=5),
-        mount_tmp_dir=False,
-        mounts=[Mount(source='/root/zdir/docker/airflow/dags', target='/opt/airflow/dags', type='bind')],
-        dag=dag,
+        get_logs=True,
+        env_vars={"TZ":"America/Chicago"},
     )
         
     #operator that will convert jinga into key value pair for dynamic file produced in t2
