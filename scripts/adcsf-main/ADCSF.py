@@ -59,6 +59,7 @@ with models.DAG(
         task_id="script_task",
         get_logs=True,
         env_vars={"TZ":"America/Chicago"},
+        do_xcom_push=True,
     )
         
     #operator that will convert jinga into key value pair for dynamic file produced in t2
