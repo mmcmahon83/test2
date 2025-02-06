@@ -80,7 +80,7 @@ with models.DAG(
         volume_mounts=[vol1],
         arguments=['Rscript', '/opt/airflow/dags/repo/scripts/adcsf-main/ADCSF.R'],
         labels={"r-base": "r-base"},
-        name="r-base",
+        name="adcsf",
         task_id="script_task",
         get_logs=True,
         env_vars={"TZ":"America/Chicago"},
