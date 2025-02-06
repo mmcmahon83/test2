@@ -73,7 +73,7 @@ with models.DAG(
     email = EmailOperator(
          task_id="Send_Results",
          from_email="airflow@sonichealthcareusa.com",
-         to=emaillist,
+         to="mmcmahon@sonichealthcareusa.com",
          subject=f"{reportID}",
          html_content=f"Attached is the {reportID}. Please contact the Data Science Department at cpldatascience@cpllabs.com if there are any issues. Have a good day!",
          files=['{{ ti.xcom_pull(task_ids="render_output",key="filename") }}'] #key  that identifies file
