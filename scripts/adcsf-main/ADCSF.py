@@ -41,37 +41,11 @@ with models.DAG(
     tags=["docker","daily","Nielsa","Production"],
 ) as dag:
        
-    # docker operator that runs script, returns jinja that can be read to get dynamic file names
-#    script = DockerOperator(
-#        docker_url=os.getenv("docker_url"),  
-#        command="Rscript /opt/airflow/dags/Scripts/adcsf/ADCSF.R",
-#        image="sonic/r-base",
-#        working_dir="/opt/airflow/dags/Scripts",
-#        network_mode="bridge",
-#        task_id="script_task",
-#        environment={"TZ":"America/Chicago"},
-#        retries=3,
-#        retry_delay=timedelta(minutes=5),
-#        mount_tmp_dir=False,
-#        mounts=[Mount(source='/root/zdir/docker/airflow/dags', target='/opt/airflow/dags', type='bind')],
-#        dag=dag,
-#    )
-
-#default_args = {
-#    'owner': 'Mike',
-#    'start_date': datetime(2020, 5, 5),
-#    'retries': 1,
-#    'retry_delay': timedelta(seconds=5)
-#}
     vol1 = k8s.V1VolumeMount(name='test-volume', mount_path='/opt/airflow/dags')
     volume = k8s.V1Volume(
             name='test-volume',
             persistent_volume_claim=k8s.V1PersistentVolumeClaimVolumeSource(claim_name='airflow-dags'),
     )
-
-#with DAG('etl_dag',
-#         default_args=default_args,
-#         schedule_interval=None) as dag:
              
     script = kubernetes_pod_operator.KubernetesPodOperator(
         namespace='airflow',
