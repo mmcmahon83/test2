@@ -57,7 +57,7 @@ with models.DAG(
 #        dag=dag,
 #    )
 
-    default_args = {
+default_args = {
     'owner': 'Mike',
     'start_date': datetime(2020, 5, 5),
     'retries': 1,
