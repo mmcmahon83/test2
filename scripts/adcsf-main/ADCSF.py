@@ -27,7 +27,7 @@ load_dotenv('/opt/airflow/dags/repo/scripts/.env')
 from docker.types import Mount 
 ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
 DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
-print(sGeneReportingel)
+print(ENV_ID)
 
 #variable assignment
 local_tz = pendulum.timezone("America/Chicago") #sets timezone to CST
