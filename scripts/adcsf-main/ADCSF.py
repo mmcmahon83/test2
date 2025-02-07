@@ -16,8 +16,8 @@ from pathlib import Path
 # mount information and DAGID
 load_dotenv()
 #from docker.types import Mount 
-#ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
-#DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
+ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
+DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
 
 
 #mount information and DAGID
