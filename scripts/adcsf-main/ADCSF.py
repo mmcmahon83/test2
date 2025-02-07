@@ -14,10 +14,10 @@ from kubernetes.client import models as k8s
 from pathlib import Path
 
 mount information and DAGID
-mvm load_dotenv()
-mvm from docker.types import Mount 
-mvm ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
-mvm DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
+load_dotenv()
+from docker.types import Mount 
+ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
+DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
 
 
 #mount information and DAGID
