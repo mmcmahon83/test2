@@ -22,6 +22,7 @@ from pathlib import Path
 
 #mount information and DAGID
 dotenv_path = '/opt/airflow/dags/repo/scriptse/.env'
+load_dotenv(dotenv_path)
 #load_dotenv(dotenv_path=dotenv_path)
 # load_dotenv('/opt/airflow/dags/repo/scripts/.env')
 #from docker.types import Mount 
