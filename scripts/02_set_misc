@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+username=$(age -d -i /root/.age/age-key.txt /root/.secrets/username.age)
+password=$(age -d -i /root/.age/age-key.txt /root/.secrets/password.age)
+echo JDBC_USER=$username  >> /usr/local/lib/R/etc/Renviron.site
+echo JDBC_PASSWORD=$password  >> /usr/local/lib/R/etc/Renviron.site
