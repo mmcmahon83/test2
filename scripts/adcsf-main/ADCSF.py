@@ -11,6 +11,7 @@ from airflow.providers.smtp.operators.smtp import EmailOperator
 from airflow.operators.python import PythonOperator
 from airflow.contrib.operators import kubernetes_pod_operator
 from kubernetes.client import models as k8s
+from pathlib import Path
 
 # mvm mount information and DAGID
 # mvm load_dotenv()
