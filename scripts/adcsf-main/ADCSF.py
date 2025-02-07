@@ -21,13 +21,14 @@ from pathlib import Path
 
 
 #mount information and DAGID
-dotenv_path = Path('/opt/airflow/dags/repo/scripts/.env')
+# dotenv_path = Path('/opt/airflow/dags/repo/scripts/.env')
 # load_dotenv(dotenv_path=dotenv_path)
 load_dotenv('/opt/airflow/dags/repo/scripts/.env')
+dotenv list
 from docker.types import Mount 
 ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
 DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
-print(host)
+
 
 #variable assignment
 local_tz = pendulum.timezone("America/Chicago") #sets timezone to CST
