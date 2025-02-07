@@ -13,7 +13,7 @@ from airflow.contrib.operators import kubernetes_pod_operator
 from kubernetes.client import models as k8s
 from pathlib import Path
 
-mount information and DAGID
+# mount information and DAGID
 load_dotenv()
 from docker.types import Mount 
 ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
