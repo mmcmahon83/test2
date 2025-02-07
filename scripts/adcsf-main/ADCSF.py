@@ -13,20 +13,20 @@ from airflow.contrib.operators import kubernetes_pod_operator
 from kubernetes.client import models as k8s
 from pathlib import Path
 
-# mvm mount information and DAGID
-# mvm load_dotenv()
-# mvm from docker.types import Mount 
-# mvm ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
-# mvm DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
+mount information and DAGID
+mvm load_dotenv()
+mvm from docker.types import Mount 
+mvm ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
+mvm DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
 
 
 #mount information and DAGID
-dotenv_path = Path('/opt/airflow/dags/repo/scripts/.env')
-load_dotenv(dotenv_path=dotenv_path)
+#dotenv_path = Path('/opt/airflow/dags/repo/scripts/.env')
+#load_dotenv(dotenv_path=dotenv_path)
 # load_dotenv('/opt/airflow/dags/repo/scripts/.env')
-from docker.types import Mount 
-ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
-DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
+#from docker.types import Mount 
+#ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
+#DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
 
 
 #variable assignment
