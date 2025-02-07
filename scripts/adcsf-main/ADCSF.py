@@ -21,7 +21,7 @@ from pathlib import Path
 
 
 #mount information and DAGID
-dotenv_path = Path('/opt/airflow/dags/repo/script/.env')
+dotenv_path = Path('/opt/airflow/dags/repo/script1212/.env')
 load_dotenv(dotenv_path=dotenv_path)
 from docker.types import Mount 
 ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
