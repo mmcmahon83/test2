@@ -21,10 +21,10 @@ from pathlib import Path
 
 
 #mount information and DAGID
-# dotenv_path = '/opt/airflow/dags/repo/scriptse/env.txt'
-# load_dotenv(dotenv_path)
-#load_dotenv(dotenv_path=dotenv_path)
-load_dotenv("/opt/airflow/dags/repo/scripts/.env")
+dotenv_path = '/opt/airflow/dags/repo/scriptse/.env'
+#load_dotenv(dotenv_path)
+load_dotenv(dotenv_path=dotenv_path)
+# load_dotenv("/opt/airflow/dags/repo/scripts/.env")
 from docker.types import Mount 
 ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
 DAG_ID = "ADCSF" #update this, this will be the DAG name in Airflow
